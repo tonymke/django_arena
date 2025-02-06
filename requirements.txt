@@ -1,4 +1,6 @@
-# development requirements only
+# development-time requirements ONLY
+# put actual project requirements in pyproject.toml's project.denendencies or
+# project.optional-dependencies.
 
 black
 flake8

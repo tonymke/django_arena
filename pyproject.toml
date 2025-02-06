@@ -11,6 +11,8 @@ authors = [
 ]
 dependencies = []
 
+[project.optional-dependencies]
+
 [project.scripts]
 arena = "arena.__main__:main"
 
