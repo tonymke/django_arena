@@ -1,7 +1,7 @@
 [flake8]
 extend-ignore = E203,E501,E701
 extend-select = B950
-max-line-length = 88
+max-line-length = 120
 
 # Ignore imports in __init__ files (since they're often just organising package namespaces anyway)
 per-file-ignores = __init__.py:F401

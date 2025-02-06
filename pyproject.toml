@@ -14,6 +14,9 @@ dependencies = []
 [project.scripts]
 arena = "arena.__main__:main"
 
+[tool.black]
+line-length = 120
+
 [tool.mypy]
 strict = true
 
