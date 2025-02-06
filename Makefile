@@ -5,7 +5,7 @@ SMOKE_ARGS ?=
 
 .PHONY: all
 
-all: virtualenv check
+all: virtualenv
 
 .PHONY: check check-fmt check-lint check-type check-smoke check-smoke-pdb
 
