@@ -24,6 +24,7 @@ line-length = 120
 strict = true
 
 [tool.pytest.ini_options]
+asyncio_mode = "auto"
 filterwarnings = "error"
 testpaths = ["test"]
 
