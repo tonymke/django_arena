@@ -1,11 +1,13 @@
 PYTEST_FLAGS := -x
 PYTHON_VERSION_BIN ?= python3.10
 
+SMOKE_ARGS ?=
+
 .PHONY: all
 
 all: virtualenv check
 
-.PHONY: check check-fmt check-lint check-type check-smoke
+.PHONY: check check-fmt check-lint check-type check-smoke check-smoke-pdb
 
 check: check-fmt check-lint check-type check-test check-smoke
 
@@ -23,7 +25,10 @@ check-test: virtualenv
 	.venv/bin/pytest $(PYTEST_FLAGS) -W error::RuntimeWarning test
 
 check-smoke: virtualenv
-	.venv/bin/python -m arena
+	.venv/bin/python -m arena $(SMOKE_ARGS)
+
+check-smoke-pdb: virtualenv
+	.venv/bin/python -m pdb -m arena $(SMOKE_ARGS)
 
 .PHONY: clean clean-virtualenv clean-pycruft
 
