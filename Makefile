@@ -27,11 +27,14 @@ check-smoke: virtualenv
 
 .PHONY: clean clean-virtualenv clean-pycruft
 
-clean: clean-caches clean-virtualenv
+clean: clean-caches clean-packaging clean-virtualenv
 
 clean-caches:
 	find src test -type d -name __pycache__ -exec echo rm -rf {} +
 	rm -rf .mypy_cache .pytest_cache
+
+clean-packaging:
+	rm -rf *.egg-info src/*.egg-info dist build
 
 clean-virtualenv:
 	rm -rf .venv
