@@ -10,6 +10,7 @@ authors = [
     { name = "Tony Lechner", email = "tony@tony-lechner.com" },
 ]
 dependencies = []
+requires-python = ">= 3.10"
 
 [project.optional-dependencies]
 
