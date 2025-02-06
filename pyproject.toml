@@ -22,5 +22,9 @@ line-length = 120
 [tool.mypy]
 strict = true
 
+[tool.pytest.ini_options]
+filterwarnings = "error"
+testpaths = ["test"]
+
 [tool.setuptools.packages.find]
 where = ["src"]

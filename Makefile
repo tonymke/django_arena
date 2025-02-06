@@ -1,4 +1,3 @@
-PYTEST_FLAGS := -x
 PYTHON_VERSION_BIN ?= python3.10
 
 SMOKE_ARGS ?=
@@ -22,7 +21,7 @@ check-type: virtualenv
 	.venv/bin/mypy src test
 
 check-test: virtualenv
-	.venv/bin/pytest $(PYTEST_FLAGS) -W error::RuntimeWarning test
+	.venv/bin/pytest
 
 check-smoke: virtualenv
 	.venv/bin/python -m arena $(SMOKE_ARGS)
