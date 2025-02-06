@@ -13,7 +13,7 @@ check: check-fmt check-lint check-type check-test check-smoke
 
 check-fmt: virtualenv
 	.venv/bin/black -q --check src test
-	.venv/bin/isort -q --profile black --check src test
+	.venv/bin/isort -q black --check src test
 
 check-lint: virtualenv
 	.venv/bin/flake8 src test
@@ -42,7 +42,7 @@ clean-virtualenv:
 
 fmt: virtualenv
 	.venv/bin/black src test
-	.venv/bin/isort --profile=black src test
+	.venv/bin/isort src test
 
 .PHONY: virtualenv
 
