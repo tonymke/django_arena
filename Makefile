@@ -12,8 +12,8 @@ all: virtualenv check
 check: check-fmt check-lint check-type check-test check-smoke
 
 check-fmt: virtualenv
-	.venv/bin/black -q --check src test
-	.venv/bin/isort -q --check src test
+	.venv/bin/black --check src test
+	.venv/bin/isort --check src test
 
 check-lint: virtualenv
 	.venv/bin/flake8 src test
