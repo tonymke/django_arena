@@ -30,8 +30,8 @@ check-smoke: virtualenv
 clean: clean-caches clean-packaging clean-virtualenv
 
 clean-caches:
-	find src test -type d -name __pycache__ -exec echo rm -rf {} +
 	rm -rf .mypy_cache .pytest_cache
+	find src test -type d -name __pycache__ -exec rm -rf {} + || true
 
 clean-packaging:
 	rm -rf *.egg-info src/*.egg-info dist build
