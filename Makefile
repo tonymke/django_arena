@@ -1,8 +1,5 @@
 rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
 
-SRC := $(call rwildcard,arena,*.py)
-TEST := $(call rwildcard,test,*.py)
-
 PYTEST_FLAGS := -x
 PYTHON_VERSION_BIN ?= python3.10
 
@@ -15,17 +12,17 @@ all: virtualenv check
 check: check-fmt check-lint check-type check-test check-smoke
 
 check-fmt: virtualenv
-	.venv/bin/black --check arena test
-	.venv/bin/isort --profile black --check arena test
+	.venv/bin/black -q --check src test
+	.venv/bin/isort -q --profile black --check src test
 
 check-lint: virtualenv
-	.venv/bin/flake8 arena test
+	.venv/bin/flake8 src test
 
 check-type: virtualenv
-	.venv/bin/mypy --strict arena test
+	.venv/bin/mypy src test
 
 check-test: virtualenv
-	.venv/bin/pytest $(PYTEST_FLAGS) -W error::RuntimeWarning test/
+	.venv/bin/pytest $(PYTEST_FLAGS) -W error::RuntimeWarning test
 
 check-smoke: virtualenv
 	.venv/bin/python -m arena
@@ -35,7 +32,7 @@ check-smoke: virtualenv
 clean: clean-caches clean-virtualenv
 
 clean-caches:
-	find arena test -type d -name __pycache__ -exec echo rm -rf {} +
+	find src test -type d -name __pycache__ -exec echo rm -rf {} +
 	rm -rf .mypy_cache .pytest_cache
 
 clean-virtualenv:
@@ -44,13 +41,16 @@ clean-virtualenv:
 .PHONY: fmt
 
 fmt: virtualenv
-	.venv/bin/black arena test
-	.venv/bin/isort --profile=black arena test
+	.venv/bin/black src test
+	.venv/bin/isort --profile=black src test
 
 .PHONY: virtualenv
 
-virtualenv: .venv/pyvenv.cfg
+virtualenv: .venv/pyvenv.cfg .venv/bin/arena
 
 .venv/pyvenv.cfg: requirements.txt
 	$(PYTHON_VERSION_BIN) -m venv --clear .venv
 	.venv/bin/pip install -r requirements.txt
+
+.venv/bin/arena: .venv/pyvenv.cfg pyproject.toml
+	.venv/bin/pip install -e .
