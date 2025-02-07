@@ -19,7 +19,7 @@ def _init_logging() -> None:
                     "format": " ".join(
                         [
                             "[%(asctime)s]",
-                            "pid%(process)d",
+                            "pid:%(process)d",
                             "%(levelname)s",
                             "%(name)s",
                         ]
