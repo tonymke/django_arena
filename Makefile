@@ -51,11 +51,8 @@ fmt: virtualenv
 
 .PHONY: virtualenv
 
-virtualenv: .venv/pyvenv.cfg .venv/bin/arena
+virtualenv: .venv/pyvenv.cfg
 
-.venv/pyvenv.cfg: requirements.txt
+.venv/pyvenv.cfg: pyproject.toml requirements.txt
 	$(PYTHON_VERSION_BIN) -m venv --clear .venv
-	.venv/bin/pip install -r requirements.txt
-
-.venv/bin/arena: .venv/pyvenv.cfg pyproject.toml
-	.venv/bin/pip install -e .
+	.venv/bin/pip install -r requirements.txt -e .
