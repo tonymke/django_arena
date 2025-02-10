@@ -11,14 +11,14 @@ all: virtualenv
 check: check-fmt check-lint check-type check-test check-smoke
 
 check-fmt: virtualenv
-	.venv/bin/black --check src test
-	.venv/bin/isort --check src test
+	.venv/bin/black --check src tests
+	.venv/bin/isort --check src tests
 
 check-lint: virtualenv
-	.venv/bin/flake8 src test
+	.venv/bin/flake8 src tests
 
 check-type: virtualenv
-	.venv/bin/mypy src test
+	.venv/bin/mypy src tests
 
 check-test: virtualenv
 	.venv/bin/pytest
@@ -35,7 +35,7 @@ clean: clean-caches clean-packaging
 
 clean-caches:
 	rm -rf .mypy_cache .pytest_cache
-	find src test -type d -name __pycache__ -exec rm -rf {} + || true
+	find src tests -type d -name __pycache__ -exec rm -rf {} + || true
 
 clean-packaging:
 	rm -rf *.egg-info src/*.egg-info dist build
@@ -50,8 +50,8 @@ superclean-virtualenv:
 .PHONY: fmt
 
 fmt: virtualenv
-	.venv/bin/black src test
-	.venv/bin/isort src test
+	.venv/bin/black src tests
+	.venv/bin/isort src tests
 
 .PHONY: virtualenv
 
