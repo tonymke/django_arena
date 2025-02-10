@@ -29,9 +29,9 @@ check-smoke: virtualenv
 check-smoke-pdb: virtualenv
 	.venv/bin/python -m pdb -m arena $(SMOKE_ARGS)
 
-.PHONY: clean clean-caches clean-packaging clean-virtualenv
+.PHONY: clean clean-caches clean-packaging
 
-clean: clean-caches clean-packaging clean-virtualenv
+clean: clean-caches clean-packaging
 
 clean-caches:
 	rm -rf .mypy_cache .pytest_cache
@@ -40,7 +40,11 @@ clean-caches:
 clean-packaging:
 	rm -rf *.egg-info src/*.egg-info dist build
 
-clean-virtualenv:
+.PHONY: superclean superclean-virtualenv
+
+superclean: clean superclean-virtualenv
+
+superclean-virtualenv:
 	rm -rf .venv
 
 .PHONY: fmt
