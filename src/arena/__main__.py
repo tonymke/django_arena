@@ -16,15 +16,7 @@ def _init_logging() -> None:
             "version": 1,
             "formatters": {
                 "default": {
-                    "format": " ".join(
-                        [
-                            "[%(asctime)s]",
-                            "pid:%(process)d",
-                            "%(levelname)s",
-                            "%(name)s",
-                        ]
-                    )
-                    + "\t%(message)s",
+                    "format": "%(message)s",
                 },
             },
             "handlers": {
