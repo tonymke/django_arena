@@ -57,6 +57,6 @@ fmt: virtualenv
 
 virtualenv: .venv/pyvenv.cfg
 
-.venv/pyvenv.cfg: pyproject.toml requirements.txt
+.venv/pyvenv.cfg: pyproject.toml
 	$(PYTHON_VERSION_BIN) -m venv --clear .venv
-	.venv/bin/pip install -r requirements.txt -e .
+	.venv/bin/pip install -e ".[dev]"
