@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "arena"
 version = "0.0.1.dev0"
-description = "A place to putz with Python."
+description = "A place to putz with Django."
 authors = [
     { name = "Tony Lechner", email = "tony@tony-lechner.com" },
 ]
