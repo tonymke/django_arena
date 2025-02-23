@@ -9,7 +9,10 @@ description = "A place to putz with Django."
 authors = [
     { name = "Tony Lechner", email = "tony@tony-lechner.com" },
 ]
-dependencies = []
+dependencies = [
+    "Django>=3.2",
+    "django-stubs>=1.14",
+]
 requires-python = ">= 3.9"  # EOL 31 Oct 2025
 
 [project.optional-dependencies]

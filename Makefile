@@ -1,4 +1,8 @@
-PYTHON_VERSION_BIN ?= python3.9
+PIP_INSTALL_CONSTRAINTS ?= constraints-django3.2.txt
+PIP_INSTALL_FLAGS ?=
+PYTHON_VERSION_BIN ?= python3.10
+
+PIP_INSTALL_FLAGS += $(foreach file, $(PIP_INSTALL_CONSTRAINTS), -c $(file))
 
 .PHONY: all
 
@@ -49,6 +53,6 @@ fmt: virtualenv
 
 virtualenv: .venv/pyvenv.cfg
 
-.venv/pyvenv.cfg: pyproject.toml
+.venv/pyvenv.cfg: pyproject.toml $(PIP_INSTALL_CONSTRAINTS)
 	$(PYTHON_VERSION_BIN) -m venv --clear .venv
-	.venv/bin/pip install -e ".[dev]"
+	.venv/bin/pip install $(PIP_INSTALL_FLAGS) -e ".[dev]"
