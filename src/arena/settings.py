@@ -29,6 +29,32 @@ DEBUG = True
 
 ALLOWED_HOSTS: list[str] = []
 
+LOGGING = {
+    "version": 1,
+    "formatters": {
+        "default": {
+            "format": "%(message)s",
+        },
+    },
+    "handlers": {
+        "default": {
+            "class": "logging.StreamHandler",
+            "formatter": "default",
+        },
+    },
+    "root": {"level": "WARNING", "handlers": ["default"]},
+    "loggers": {
+        "django": {"level": "INFO"},
+        **{
+            pkg: {
+                "level": "DEBUG",
+                "handlers": ["default"],
+                "propagate": False,
+            }
+            for pkg in ("arena", "test", "__main__")
+        },
+    },
+}
 
 # Application definition
 
