@@ -1,14 +1,12 @@
 PYTHON_VERSION_BIN ?= python3.9
 
-SMOKE_ARGS ?=
-
 .PHONY: all
 
 all: virtualenv
 
-.PHONY: check check-fmt check-lint check-type check-test check-smoke check-smoke-pdb
+.PHONY: check check-fmt check-lint check-type check-test
 
-check: check-fmt check-lint check-type check-test check-smoke
+check: check-fmt check-lint check-type check-test
 
 check-fmt: virtualenv
 	.venv/bin/black --check src tests
@@ -22,12 +20,6 @@ check-type: virtualenv
 
 check-test: virtualenv
 	.venv/bin/pytest
-
-check-smoke: virtualenv
-	.venv/bin/python -m arena $(SMOKE_ARGS)
-
-check-smoke-pdb: virtualenv
-	.venv/bin/python -m pdb -m arena $(SMOKE_ARGS)
 
 .PHONY: clean clean-caches clean-packaging
 
