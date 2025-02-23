@@ -6,7 +6,7 @@ SMOKE_ARGS ?=
 
 all: virtualenv
 
-.PHONY: check check-fmt check-lint check-type check-test check-smoke check-smoke-pdb
+.PHONY: check check-fmt check-lint check-type check-test check-smoke
 
 check: check-fmt check-lint check-type check-test check-smoke
 
@@ -25,9 +25,6 @@ check-test: virtualenv
 
 check-smoke: virtualenv
 	.venv/bin/python -m arena $(SMOKE_ARGS)
-
-check-smoke-pdb: virtualenv
-	.venv/bin/python -m pdb -m arena $(SMOKE_ARGS)
 
 .PHONY: clean clean-caches clean-packaging
 
