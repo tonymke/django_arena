@@ -1,11 +1,20 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger: Module",
+            "name": "Python Debugger: Django",
             "type": "debugpy",
             "request": "launch",
-            "module": "arena"
+            "args": [
+                "runserver",
+                "localhost:8080"
+            ],
+            "django": true,
+            "autoStartBrowser": false,
+            "program": "${workspaceFolder}/.venv/bin/arena"
         }
     ]
 }
