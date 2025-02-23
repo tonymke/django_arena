@@ -1,4 +1,4 @@
-PYTHON_VERSION_BIN ?= python3.9
+PYTHON_VERSION_BIN ?= python3.10
 
 SMOKE_ARGS ?=
 
