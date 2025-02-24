@@ -2,7 +2,7 @@ PIP_CONSTRAINTS_FILES ?=
 PIP_REQUIREMENTS_FILES ?= 
 PYTHON_VERSION_BIN ?= python3.10
 
-SMOKE_ARGS ?=
+SMOKE_ARGS ?= check  # functionally, ./manage.py check
 
 .PHONY: all
 
