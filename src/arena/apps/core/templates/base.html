@@ -3,10 +3,14 @@
 <html lang="en-US">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="{% static 'core/css/base.css' %}">
-<script src="{% static 'core/js/base.js' %}" defer></script>
-
 <title>Arena</title>
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% block stylesheets %}
+{% endblock %}
+<script src="{% static 'js/base.js' %}" defer></script>
+{% block scripts %}
+{% endblock %}
+
 
 <header>
     {% block header %}
