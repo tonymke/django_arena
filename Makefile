@@ -72,7 +72,7 @@ fmt-isort: virtualenv
 
 database: db.sqlite3
 
-db.sqlite3: virtualenv $(MIGRATIONS_SRC)
+db.sqlite3: .venv/ynot_installed.txt
 	.venv/bin/python -m arena migrate
 	touch "$@"
 
