@@ -1,12 +1,13 @@
 PIP_CONSTRAINTS_FILES ?= constraints/django-3_2.txt
 PIP_REQUIREMENTS_FILES ?= 
 PYTHON_VERSION_BIN ?= python3.10
-
 SMOKE_ARGS ?= check  # functionally, ./manage.py check
+
+MIGRATIONS_SRC := $(shell find src -type f -path '*/migrations/[0-9][0-9]*_[a-zA-Z0-9_]*.py')
 
 .PHONY: all
 
-all: virtualenv
+all: virtualenv database
 
 .PHONY: check check-fmt check-lint check-type check-ungenerated-migrations check-test check-smoke 
 
@@ -31,9 +32,9 @@ check-test: virtualenv
 check-smoke: virtualenv
 	.venv/bin/python -m arena $(SMOKE_ARGS)
 
-.PHONY: clean clean-caches clean-packaging clean-virtualenv
+.PHONY: clean clean-caches clean-packaging clean-database clean-virtualenv-packages
 
-clean: clean-caches clean-packaging clean-virtualenv-packages
+clean: clean-caches clean-packaging clean-database clean-virtualenv-packages
 
 clean-caches:
 	rm -rf .mypy_cache .pytest_cache
@@ -41,6 +42,9 @@ clean-caches:
 
 clean-packaging:
 	rm -rf *.egg-info src/*.egg-info dist build
+
+clean-database:
+	rm -f db.sqlite3
 
 clean-virtualenv-packages:
 # Language serers really don't appreciate their virtualenv itself disappearing mid-process. Prefer cleaning out all packages by default
@@ -59,6 +63,14 @@ superclean-virtualenv:
 fmt: virtualenv
 	.venv/bin/black src tests
 	.venv/bin/isort src tests
+
+.PHONY: database
+
+database: db.sqlite3
+
+db.sqlite3: virtualenv $(MIGRATIONS_SRC)
+	.venv/bin/python -m arena migrate
+	touch "$@"
 
 .PHONY: virtualenv
 
