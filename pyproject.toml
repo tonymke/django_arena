@@ -7,7 +7,7 @@ name = "arena"
 version = "0.0.1.dev0"
 description = "A place to putz with Python."
 authors = [
-    { name = "Tony Lechner", email = "tony@tony-lechner.com" },
+    { name = "User Name", email = "user.name@localhost" },
 ]
 dependencies = []
 requires-python = ">= 3.9"  # EOL 31 Oct 2025
