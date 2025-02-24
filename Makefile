@@ -49,7 +49,7 @@ clean-virtualenv-packages:
 
 .PHONY: superclean superclean-virtualenv
 
-superclean: superclean-virtualenv
+superclean: clean superclean-virtualenv
 
 superclean-virtualenv:
 	rm -rf .venv
