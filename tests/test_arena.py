@@ -1,5 +1,5 @@
 from __future__ import annotations
 
 
-async def test_placeholder() -> None:
+def test_arena() -> None:
     assert True
