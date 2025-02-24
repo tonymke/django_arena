@@ -58,10 +58,14 @@ superclean: clean superclean-virtualenv
 superclean-virtualenv:
 	rm -rf .venv
 
-.PHONY: fmt
+.PHONY: fmt fmt-black fmt-isort
 
-fmt: virtualenv
+fmt: fmt-black fmt-isrot
+
+fmt-black: virtualenv
 	.venv/bin/black src tests
+
+fmt-isort: virtualenv
 	.venv/bin/isort src tests
 
 .PHONY: database
