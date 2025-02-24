@@ -28,7 +28,7 @@ check-test: virtualenv
 check-smoke: virtualenv
 	.venv/bin/python -m arena $(SMOKE_ARGS)
 
-.PHONY: clean clean-caches clean-packaging clean-virtualenv
+.PHONY: clean clean-caches clean-packaging clean-virtualenv-packages
 
 clean: clean-caches clean-packaging clean-virtualenv-packages
 
