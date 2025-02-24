@@ -8,7 +8,7 @@ SMOKE_ARGS ?= check  # functionally, ./manage.py check
 
 all: virtualenv
 
-.PHONY: check check-fmt check-lint check-type check-test check-smoke
+.PHONY: check check-fmt check-lint check-type check-ungenerated-migrations check-test check-smoke 
 
 check: check-fmt check-lint check-type check-test check-smoke
 
@@ -18,6 +18,9 @@ check-fmt: virtualenv
 
 check-lint: virtualenv
 	.venv/bin/flake8 src tests
+
+check-ungenerated-migrations: virtualenv
+	.venv/bin/python -m arena makemigrations --check
 
 check-type: virtualenv
 	.venv/bin/mypy src tests
