@@ -33,7 +33,7 @@ def _init_logging() -> None:
                         "handlers": ["default"],
                         "propagate": False,
                     }
-                    for pkg in ("arena", "test", "__main__")
+                    for pkg in ("arena", "tests", "__main__")
                 }
             },
         }
