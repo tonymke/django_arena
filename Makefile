@@ -56,6 +56,6 @@ virtualenv: .venv/pyvenv.cfg .venv/ynot_installed.txt
 	$(PYTHON_VERSION_BIN) -m venv --clear .venv
 
 .venv/ynot_installed.txt: pyproject.toml $(PIP_CONSTRAINTS_FILES) $(PIP_REQUIREMENTS_FILES)
-	sh -c '.venv/bin/pip freeze | xargs -r .venv/bin/pip uninstall -y'
+	sh -c ".venv/bin/pip freeze| sed -E 's/-e .*#egg=(.+)/\1/g' | sed -E 's/==.*//g' | xargs -r .venv/bin/pip uninstall -y"
 	.venv/bin/pip install -e ".[dev]" $(foreach f,$(PIP_CONSTRAINTS_FILES),-c $(f)) $(foreach f,$(PIP_REQUIREMENTS_FILES),-r $(f))
 	.venv/bin/pip freeze > "$@"
