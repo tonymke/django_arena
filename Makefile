@@ -44,6 +44,8 @@ clean-virtualenv-packages:
 # Here we check if there is a venv, delete all packages. Otherwise do nothing - there is no need to make one just to do no emptying.
 	sh -c "[ ! -r .venv/bin/pip ] || .venv/bin/pip freeze | sed -E 's/-e .*#egg=(.+)/\1/g' | sed -E 's/==.*//g' | xargs -r .venv/bin/pip uninstall -y"
 
+.PHONY: superclean superclean-virtualenv
+
 superclean: superclean-virtualenv
 
 superclean-virtualenv:
