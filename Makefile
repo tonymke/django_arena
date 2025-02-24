@@ -68,7 +68,7 @@ virtualenv: .venv/pyvenv.cfg .venv/ynot_installed.txt
 .venv/pyvenv.cfg:
 	$(PYTHON_VERSION_BIN) -m venv --clear .venv
 
-.venv/ynot_installed.txt: pyproject.toml $(PIP_CONSTRAINTS_FILES) $(PIP_REQUIREMENTS_FILES)
+.venv/ynot_installed.txt: .venv/pyvenv.cfg pyproject.toml $(PIP_CONSTRAINTS_FILES) $(PIP_REQUIREMENTS_FILES)
 # Language serers really don't appreciate their virtualenv itself disappearing mid-process. Prefer cleaning out all packages by default
 	sh -c ".venv/bin/pip freeze| sed -E 's/-e .*#egg=(.+)/\1/g' | sed -E 's/==.*//g' | xargs -r .venv/bin/pip uninstall -y"
 	.venv/bin/pip install -e ".[dev]" $(foreach f,$(PIP_CONSTRAINTS_FILES),-c $(f)) $(foreach f,$(PIP_REQUIREMENTS_FILES),-r $(f))
