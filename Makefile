@@ -11,7 +11,7 @@ all: virtualenv database
 
 .PHONY: check check-fmt check-lint check-type check-ungenerated-migrations check-test check-smoke 
 
-check: check-fmt check-lint check-type check-test check-smoke
+check: check-fmt check-lint check-type check-ungenerated-migrations check-test check-smoke
 
 check-fmt: virtualenv
 	.venv/bin/black --check src tests
