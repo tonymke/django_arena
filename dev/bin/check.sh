@@ -17,3 +17,4 @@ set -x
 .venv/bin/python -m flake8 src tests
 .venv/bin/python -m mypy src tests
 .venv/bin/python -m pytest
+.venv/bin/python -m arena makemigrations --check
