@@ -1,3 +1,5 @@
+PIP_CONSTRAINTS_FILES ?=
+PIP_REQUIREMENTS_FILES ?= 
 PYTHON_VERSION_BIN ?= python3.10
 
 SMOKE_ARGS ?=
@@ -52,8 +54,12 @@ fmt: virtualenv
 
 .PHONY: virtualenv
 
-virtualenv: .venv/pyvenv.cfg
+virtualenv: .venv/pyvenv.cfg .venv/ynot_installed.txt
 
-.venv/pyvenv.cfg: pyproject.toml
+.venv/pyvenv.cfg:
 	$(PYTHON_VERSION_BIN) -m venv --clear .venv
-	.venv/bin/pip install -e ".[dev]"
+
+.venv/ynot_installed.txt: pyproject.toml $(PIP_CONSTRAINTS_FILES) $(PIP_REQUIREMENTS_FILES)
+	sh -c '.venv/bin/pip freeze | xargs -r .venv/bin/pip uninstall -y'
+	.venv/bin/pip install -e ".[dev]" $(foreach f,$(PIP_CONSTRAINTS_FILES),-c $(f)) $(foreach f,$(PIP_REQUIREMENTS_FILES),-r $(f))
+	.venv/bin/pip freeze > "$@"
