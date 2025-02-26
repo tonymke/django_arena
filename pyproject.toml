@@ -22,10 +22,6 @@ dev = [
     "pytest",
     "pytest-asyncio",
 ]
-dev-fmt = ["black", "isort"]
-dev-lint = ["flake8", "flake8-bugbear"]
-dev-check = ["mypy"]
-dev-test = ["pytest", "pytest-asyncio"]
 
 [project.scripts]
 arena = "arena.__main__:main"
