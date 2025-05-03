@@ -2,11 +2,28 @@ MARKER_DIR := .make
 PYTHON_DEP_MARKER := $(MARKER_DIR)/python_dep.makemarker
 VIRTUALENV_MARKER := $(MARKER_DIR)/virtualenv.makemarker
 
+DIRS :=
+DIRS += $(MARKER_DIR)
 MARKERS := $(PYTHON_DEP_MARKER) $(VIRTUALENV_MARKER)
+
 
 .PHONY: all
 
-all: virtualenv
+all: base_config virtualenv
+
+VSCODE_DIR := .vscode
+DIRS += $(VSCODE_DIR)
+
+VSCODE_BASE_FILES := $(wildcard dev/conf/vscode/*.json)
+VSCODE_TARGET_FILES := $(patsubst dev/conf/vscode/%, $(VSCODE_DIR)/%, $(VSCODE_BASE_FILES))
+
+.PHONY: base_config
+
+base_config: $(VSCODE_TARGET_FILES)
+
+.vscode/%.json: dev/conf/vscode/%.json | $(VSCODE_DIR)
+	[ -r "$@" ] || ln -s ../dev/conf/vscode/$*.json $@
+	touch -c "$@"
 
 .PHONY: check check-deps check-fmt check-lint check-type check-test check-smoke
 
@@ -75,5 +92,5 @@ $(VIRTUALENV_MARKER): | $(MARKER_DIR)
 	uv $(UV_FLAGS) venv --python $(PYTHON_VERSION_BIN) --seed $(UV_VENV_FLAGS)
 	touch "$@"
 
-$(MARKER_DIR):
-	mkdir -p $(MARKER_DIR)
+$(DIRS):
+	mkdir -p "$@"
