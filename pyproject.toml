@@ -41,3 +41,6 @@ testpaths = ["tests"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.uv]
+constraint-dependencies = ["Django<4"]
