@@ -6,14 +6,9 @@ build-backend = "setuptools.build_meta"
 name = "arena"
 version = "0.0.1.dev0"
 description = "A place to putz with Django."
-authors = [
-    { name = "User Name", email = "user.name@nowhere.localhost" },
-]
-dependencies = [
-    "Django>=3.2",
-    "django-stubs>=1.14",
-]
-requires-python = ">= 3.9"  # EOL 31 Oct 2025
+authors = [{ name = "User Name", email = "user.name@nowhere.localhost" }]
+dependencies = ["Django>=3.2", "django-stubs>=1.14"]
+requires-python = ">= 3.9"                                                # EOL 31 Oct 2025
 
 [dependency-groups]
 dev = [
