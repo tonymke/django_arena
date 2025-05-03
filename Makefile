@@ -69,6 +69,13 @@ superclean: clean superclean-virtualenv
 superclean-virtualenv:
 	rm -rf .venv
 
+.PHONY: confclean confclean-vscode
+
+confclean: confclean-vscode
+
+confclean-vscode:
+	rm -rf .vscode
+
 .PHONY: fmt fmt-black fmt-isort
 
 fmt: fmt-black fmt-isort
