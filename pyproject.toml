@@ -12,7 +12,7 @@ authors = [
 dependencies = []
 requires-python = ">= 3.9"  # EOL 31 Oct 2025
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "black",
     "flake8",
