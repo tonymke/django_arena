@@ -1,2 +1,0 @@
-Django>=3.2,<4
-django-stubs>3.2,<5  # no explicit 3.2 version
