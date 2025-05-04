@@ -43,4 +43,7 @@ testpaths = ["tests"]
 where = ["src"]
 
 [tool.uv]
-constraint-dependencies = ["Django<4"]
+constraint-dependencies = [
+  "Django<4",
+  "django-stubs>3.2,<5",  # no explicit 3.2 version
+]
