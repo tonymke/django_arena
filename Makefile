@@ -106,7 +106,7 @@ fmt-isort: virtualenv
 
 database: $(DATABASE_FILE)
 
-db.sqlite3: $(MIGRATIONS_SRC) $(VIRTUALENV_MARKER) 
+db.sqlite3: $(MIGRATIONS_SRC) $(VIRTUALENV_MARKER)
 	.venv/bin/python -m arena migrate
 	touch "$@"
 
