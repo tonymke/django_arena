@@ -54,7 +54,7 @@ check-test: virtualenv
 	.venv/bin/pytest
 
 check-smoke: virtualenv
-	.venv/bin/python -m arena $(SMOKE_FLAGS)
+	.venv/bin/python -m arena $(SMOKE_ARGS)
 
 .PHONY: clean clean-caches clean-markers clean-database clean-packaging
 
