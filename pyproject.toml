@@ -49,4 +49,5 @@ where = ["src"]
 constraint-dependencies = [
   "Django<4",
   "django-stubs>3.2,<5",  # no explicit 3.2 version
+  "pytest-django>4,<4.9", # 4.9 drops django 3.2 support
 ]
