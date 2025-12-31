@@ -38,7 +38,7 @@ asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
 filterwarnings = [
     "error",
-    "default::DeprecationWarning",  # show but do not fail for deprecated bits used by Django 3.2, such as the `cgi` module
+    "default::DeprecationWarning",  # show but do not fail for deprecated bits used by deps
 ]
 testpaths = ["tests"]
 
