@@ -5,8 +5,6 @@ my taste spaces for playing around with ideas in a particular language.
 
 This is the one for Django.
 
-It is a fork of [tonymke/python_arena](https://github.com/tonymke/python_arena)
-
 License
 -------
 
