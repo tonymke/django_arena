@@ -1,12 +1,11 @@
-# django_arena
+# django\_arena
 
 Arenas are my repositories of ready-to-go, fully bootstrapped and configured to
 my taste spaces for playing around with ideas in a particular language.
 
 This is the one for Django.
 
-License
--------
+## License
 
 [MIT No Attribution](https://spdx.org/licenses/MIT-0.html) (SPDX: `MIT-0`)
 
