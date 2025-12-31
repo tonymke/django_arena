@@ -2,13 +2,6 @@ version = 1
 revision = 3
 requires-python = ">=3.10, <3.13"
 
-[manifest]
-constraints = [
-    { name = "django", specifier = "<4" },
-    { name = "django-stubs", specifier = ">3.2,<5" },
-    { name = "pytest-django", specifier = ">4,<4.9" },
-]
-
 [[package]]
 name = "arena"
 version = "0.0.1.dev0+dirty"
@@ -32,8 +25,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "django", specifier = ">=3.2" },
-    { name = "django-stubs", specifier = ">=1.14" },
+    { name = "django", specifier = ">=3.2,<4" },
+    { name = "django-stubs", specifier = ">=1.14,<5" },
 ]
 
 [package.metadata.requires-dev]
@@ -45,7 +38,7 @@ dev = [
     { name = "mypy" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
-    { name = "pytest-django" },
+    { name = "pytest-django", specifier = ">=4,<4.9" },
 ]
 
 [[package]]
