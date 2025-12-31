@@ -11,7 +11,7 @@ constraints = [
 
 [[package]]
 name = "arena"
-version = "0.0.1.dev0"
+version = "0.0.1.dev0+dirty"
 source = { editable = "." }
 dependencies = [
     { name = "django" },
