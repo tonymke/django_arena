@@ -32,5 +32,8 @@ dmypy.json
 # Unit test / coverage reports
 .pytest_cache/
 
+# uv local overrides
+uv.toml
+
 # Virtual Environments
 .venv*/
