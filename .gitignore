@@ -1,9 +1,3 @@
-# Common editor configs
-.idea
-.idea/
-.vscode
-.vscode/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -12,25 +6,31 @@ __pycache__/
 # C extensions
 *.so
 
+# Common editor configs
+.idea
+.idea/
+.vscode
+.vscode/
+
 # Distribution / packaging
+*.egg
+*.egg-info/
+MANIFEST
 build/
 dist/
-*.egg-info/
-*.egg
-MANIFEST
-
-# Unit test / coverage reports
-.pytest_cache/
 
 # Django sqlite databases
 db.sqlite3
 db.sqlite3-journal
 
-# Virtual Environments
-.env
-.venv*/
-
 # mypy
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Unit test / coverage reports
+.pytest_cache/
+
+# Virtual Environments
+.env
+.venv*/
