@@ -31,7 +31,11 @@ arena = "arena.__main__:main"
 [tool.black]
 line-length = 120
 
+[tool.django-stubs]
+django_settings_module = "arena.settings"
+
 [tool.mypy]
+plugins = ["mypy_django_plugin.main"]
 strict = true
 
 [tool.pytest.ini_options]
