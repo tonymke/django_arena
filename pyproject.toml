@@ -18,6 +18,7 @@ dev = [
   "black",
   "flake8",
   "flake8-bugbear",
+  "flake8-pyproject",
   "isort",
   "mypy",
   "pytest",
@@ -34,6 +35,12 @@ line-length = 120
 
 [tool.django-stubs]
 django_settings_module = "arena.settings"
+
+[tool.flake8]
+extend-ignore = "E203,E501,E701"
+extend-select = "B950"
+max-line-length = 120
+per-file-ignores = "__init__.py:F401"
 
 [tool.isort]
 profile = "black"
