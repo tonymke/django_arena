@@ -8,12 +8,12 @@ version = "0.0.1.dev0+dirty"
 source = { editable = "." }
 dependencies = [
     { name = "django" },
-    { name = "django-stubs" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "black" },
+    { name = "django-stubs" },
     { name = "flake8" },
     { name = "flake8-bugbear" },
     { name = "flake8-pyproject" },
@@ -25,14 +25,12 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "django", specifier = ">=3.2,<4" },
-    { name = "django-stubs", specifier = ">=1.14,<5" },
-]
+requires-dist = [{ name = "django", specifier = ">=3.2,<4" }]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "black" },
+    { name = "django-stubs", specifier = ">=1.14,<5" },
     { name = "flake8" },
     { name = "flake8-bugbear" },
     { name = "flake8-pyproject" },
