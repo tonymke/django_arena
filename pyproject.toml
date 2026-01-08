@@ -29,6 +29,7 @@ dev = [
 arena = "arena.__main__:main"
 
 [tool.black]
+extend-exclude = "migrations"
 line-length = 120
 
 [tool.django-stubs]
