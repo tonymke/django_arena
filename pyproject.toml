@@ -8,14 +8,14 @@ version = "0.0.1.dev0+dirty"
 description = "A place to putz with Django."
 authors = [{ name = "User Name", email = "user.name@nowhere.localhost" }]
 dependencies = [
-  "Django>=3.2,<4",
+  "Django>=4,<5",
 ]
-requires-python = ">= 3.10,<3.13"  # EOL 3.10 31 Oct 2026; django 3 breaks in 3.13+
+requires-python = ">= 3.10"  # EOL 3.10 31 Oct 2026
 
 [dependency-groups]
 dev = [
   "black",
-  "django-stubs>=1.14,<5",  # Django 3 support dropped in 5.0
+  "django-stubs>=4,<5",  # Versioning mirrors Django's
   "flake8",
   "flake8-bugbear",
   "flake8-pyproject",
@@ -23,7 +23,7 @@ dev = [
   "mypy",
   "pytest",
   "pytest-asyncio",
-  "pytest-django>=4,<4.9",  # 4.9 drops Django 3 support
+  "pytest-django",
 ]
 
 [project.scripts]
