@@ -1,8 +1,9 @@
 {
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
   "[python]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
+      "source.organizeImports": "never"
     },
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
